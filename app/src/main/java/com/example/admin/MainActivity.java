@@ -1,5 +1,6 @@
 package com.example.admin;
 
+import android.content.Intent;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,7 +16,7 @@ import java.sql.SQLException;
 
 public class MainActivity extends AppCompatActivity {
     EditText email,password;
-    Button login;
+    Button login, btn_register;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,9 +25,9 @@ public class MainActivity extends AppCompatActivity {
         email=(EditText) findViewById(R.id.editTextTextPersonName);
         password=(EditText) findViewById(R.id.editTextTextPassword);
         login=(Button) findViewById(R.id.button);
-
-
+        btn_register = (Button) findViewById(R.id.btn_register);
     }
+
     public Connection conexionBD(){
         Connection conexion=null;
         try{
@@ -36,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
             conexion= DriverManager.getConnection("jdbc:jtds:sqlserver://svr.ardabytec.vip;databaseName=rtm;user=sa;password=Primus90.$@;");
         }catch (Exception e){
             Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
-
         }
         return conexion;
     }
@@ -50,5 +50,11 @@ public class MainActivity extends AppCompatActivity {
         }catch (SQLException e){
             Toast.makeText(getApplicationContext(),"Problemas",Toast.LENGTH_SHORT).show();
         }
+    }
+
+    //Metodo para cambiar a la pantalla de registro
+    public void register(View view){
+        Intent i = new Intent(this, Register.class);
+        startActivity(i);
     }
 }
