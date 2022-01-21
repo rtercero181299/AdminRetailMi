@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Metodo para cambiar a la pantalla de registro
     public void register(View view){
-        Intent i = new Intent(this, Register.class);
+        Intent i = new Intent(this, UploadAssets.class);
         startActivity(i);
     }
 }
